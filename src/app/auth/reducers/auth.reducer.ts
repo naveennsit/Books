@@ -24,7 +24,30 @@ export function reducer(state = initialState, action: AuthActions) {
         pending: true,
         error: null
       };
-    default :
+
+    case AuthActionsTypes.LOGIN_SUCCESS :
+      return {
+        ...state,
+        pending: false,
+        error: null,
+        user: action.payload.user
+      };
+    case AuthActionsTypes.LOGIN_FAILURE :
+      return {
+        ...state,
+        pending: false,
+        error: null,
+        user: action.payload.error
+      };
+
+    case AuthActionsTypes.LOGOUT :
+      return {
+        ...state,
+        pending: false,
+        error: null,
+        user: null
+      };
+      default :
       return state;
   }
 }

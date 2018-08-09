@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Authenticate} from '../../model/auth.model';
+import {Store} from '@ngrx/store';
+import {AuthState} from '../../reducers';
+import * as Authctions from '../../actions/auth.actions';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private store: Store<AuthState>) {
+  }
 
   ngOnInit() {
+  }
+
+  onLoginButtonClick(user: Authenticate) {
+    this.store.dispatch(new Authctions.Login(user));
   }
 
 }

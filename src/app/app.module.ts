@@ -11,6 +11,8 @@ import {routes} from './routes';
 import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
 import {reducers} from './reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffect} from './auth/effect/auth.effect';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {reducers} from './reducer';
       name: 'APM Demo App DevTools',
       maxAge: 25,
       logOnly: environment.production,
-    })
+    }),
+    EffectsModule.forRoot([])
 
   ],
   providers: [],
